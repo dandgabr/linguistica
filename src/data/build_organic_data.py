@@ -3,6 +3,7 @@ import json
 import xml.etree.ElementTree as ET
 import re
 import html
+import os
 
 def clean_html(text):
     text = re.sub(r'<br\s*/?>', ' — ', text)
@@ -22,7 +23,9 @@ def extract_endonym(raw_val):
     return ""
 
 def load_graph():
-    tree = ET.parse('arvore_filogenetica_unificada_poster.drawio')
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    drawio_path = os.path.join(base_dir, 'arvore_filogenetica_unificada_poster.drawio')
+    tree = ET.parse(drawio_path)
     root = tree.getroot()
     
     nodes = {}

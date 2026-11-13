@@ -50,24 +50,38 @@ A aplicação unifica três perspectivas complementares da história da linguage
 
 ---
 
-## 💻 Arquitetura Técnica
+## 💻 Arquitetura Técnica e Estrutura de Diretórios
 
 A aplicação foi projetada para ter **zero dependências externas em tempo de execução**, operando de forma 100% autônoma via protocolo `file://` ou em servidores de arquivos estáticos simples (GitHub Pages, Cloudflare Pages, Nginx):
 
 ```
-├── index.html                   # Artefato único compilado para produção (HTML + CSS + D3 + GeoJSON + Dados)
+linguistica/
+├── index.html                   # Artefato de produção (GitHub Pages)
+├── arvore_interativa.html       # Artefato local autônomo equivalente
 ├── CNAME                        # Apontamento de domínio personalizado (linguas.dan.seg.br)
 ├── LICENSE                      # Licença MIT
 ├── README.md                    # Documentação técnica e científica do projeto
-├── compile_app_d3.py            # Compilador principal que injeta templates e serializa o artefato final
-├── process_tree.py              # Parser e sanitizador dos 580 nós e suas genealogias
-├── build_geo_data.py            # Base de dados geolinguística auditada com as 21 macrofamílias
-├── build_organic_data.py        # Metadados complementares das linhagens
-├── template_head.html           # Estrutura HTML e estilos CSS (responsividade, paleta solarpunk)
-├── template_scripts_d3.js       # Lógica interativa, física da árvore e projeção esférica D3
-├── d3.min.js                    # D3.js v7 compactada para inclusão inline
-└── ne_land_110m_compact.json    # Polígonos simplificados do Natural Earth 110m
+│
+├── docs/                        # Documentação Técnica e Acadêmica
+│   ├── architecture/            # Arquitetura e Decisões de Design (ARCHITECTURE.md)
+│   └── references/              # Referências Bibliográficas, Glotocronologia e Metodologia (BIBLIOGRAPHY.md)
+│
+├── src/                         # Código-Fonte Modular
+│   ├── assets/                  # Dependências empacotadas (D3.js v7, GeoJSON Natural Earth)
+│   ├── data/                    # Modelos biogeográficos, XML Drawio e grafo de 580 nós
+│   ├── generators/              # Scripts geradores setoriais das árvores filogenéticas
+│   └── templates/               # Templates HTML, design tokens CSS e scripts de renderização
+│
+├── tools/                       # Compilação e Testes
+│   ├── build.py                 # Compilador principal unificado
+│   └── test_phase2_qa.py        # Suíte de testes automatizados de integridade e grafos
+│
+└── legacy/                      # Artefatos legados preservados para histórico de versões
 ```
+
+Consulte a documentação aprofundada em:
+- [🏛️ Arquitetura do Sistema (`docs/architecture/ARCHITECTURE.md`)](docs/architecture/ARCHITECTURE.md)
+- [📚 Corpus Bibliográfico e Glotocronologia (`docs/references/BIBLIOGRAPHY.md`)](docs/references/BIBLIOGRAPHY.md)
 
 ### Principais Inovações Técnicas:
 * **Recorte Cartográfico Esférico Real:** A verificação angular `d3.geoDistance(center, [lon, lat]) <= Math.PI / 2` garante que marcadores e dispersões do hemisfério traseiro sejam estritamente suprimidos, eliminando a projeção indevida de línguas sobre oceanos opostos.
@@ -85,11 +99,11 @@ Para recompilar a aplicação a partir do código-fonte:
 # 1. Certifique-se de possuir Python 3.8+ instalado
 python3 --version
 
-# 2. Execute o compilador D3
-python3 compile_app_d3.py
+# 2. Execute o compilador que gera simultaneamente arvore_interativa.html e index.html
+python3 tools/build.py
 
-# 3. Atualize o arquivo de entrada da web
-cp arvore_interativa.html index.html
+# 3. Execute a suíte de testes de validação automatizada de QA
+python3 tools/test_phase2_qa.py
 
 # 4. Abra diretamente no navegador
 xdg-open index.html
