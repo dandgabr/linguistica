@@ -2,13 +2,18 @@
 import json
 import xml.etree.ElementTree as ET
 import re
+import html
 
 def clean_html(text):
     text = re.sub(r'<br\s*/?>', ' — ', text)
     text = re.sub(r'<[^>]+>', '', text)
+    text = html.unescape(text)
+    # normalizar múltiplos espaços
+    text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
 def extract_endonym(raw_val):
+    raw_val = html.unescape(raw_val)
     m = re.search(r'\(([^)]+)\)', raw_val)
     if m:
         val = m.group(1).strip()
@@ -39,7 +44,7 @@ def load_graph():
             title = clean_html(lines[0])
             subtitle = clean_html(' '.join(lines[1:])) if len(lines) > 1 else ""
             endonym = extract_endonym(raw_val)
-            display_title = title.replace('†', '').strip()
+            display_title = re.sub(r'\s+', ' ', title.replace('†', '')).strip()
             
             nodes[cid] = {
                 "id": cid,
