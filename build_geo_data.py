@@ -64,9 +64,11 @@ TRUNK_GEO = {
             {"nome": "Filipinas (Tagalo / Cebuano / Ilokano)", "lat": 17.57, "lon": 120.38},
             {"nome": "Indonésia & Malásia (Malaio / Javanês)", "lat": -6.20, "lon": 106.81},
             {"nome": "Madagascar (Malgaxe / Oceano Índico)", "lat": -18.76, "lon": 46.86},
-            {"nome": "Melanésia (Cultura Lapita / Bismarck)", "lat": -2.00, "lon": 147.00},
-            {"nome": "Polinésia Central (Samoa / Tonga / Taiti)", "lat": -13.83, "lon": -171.76},
-            {"nome": "Aotearoa / Nova Zelândia (Maori)", "lat": -38.50, "lon": 175.50},
+            {"nome": "Melanésia (Horizonte Lapita / Bismarck)", "lat": -2.50, "lon": 150.50},
+            {"nome": "Micronésia (Chamorro / Micronésio)", "lat": 13.44, "lon": 144.79},
+            {"nome": "Polinésia Ocidental (Fiji / Samoa / Tonga)", "lat": -13.83, "lon": -171.76},
+            {"nome": "Havaí (Havaiano / Polinésia Oriental)", "lat": 19.83, "lon": -155.50},
+            {"nome": "Aotearoa / Nova Zelândia (Māori)", "lat": -38.50, "lon": 175.50},
             {"nome": "Rapa Nui (Ilha de Páscoa)", "lat": -27.11, "lon": -109.35}
         ]
     },
@@ -360,6 +362,43 @@ TRUNK_GEO = {
             {"nome": "Costa Pontina da Anatólia (Laz / Rize-Hopa)", "lat": 41.20, "lon": 41.30},
             {"nome": "Geórgia Oriental (Georgiano / Tbilisi / Vale do Kura)", "lat": 41.72, "lon": 44.79}
         ]
+    },
+    "node_oceania_pama_nyungan": {
+        "nome": "Proto-Pama-Nyungan (Austrália)",
+        "lat": -18.00, "lon": 139.50,
+        "era": "c. 3500–2500 a.C.",
+        "urheimat": "Planícies fluviais ao sul do Golfo de Carpentária (Rios Flinders e Leichhardt, Austrália)",
+        "ecologia": "Bacias de drenagem sazonal do Golfo e transição para o interior semiárido australiano",
+        "desc": "Maior família linguística do continente australiano cobrindo cerca de 80% do território, expandida no Holoceno médio através de redes sociais e inovações líticas.",
+        "alinhamento": "Ergativo-Absolutivo clivado (split-ergative); sufixação aglutinante estrita; marcação de dependente",
+        "ordem": "SOV estatística / Ordem de constituintes pragmática livre",
+        "referencia": "Dixon, R. M. W. (2002). Australian Languages. Bowern, C. & Atkinson, Q. (2012). Language, 88(4).",
+        "dispersions": [
+            {"nome": "Deserto Central (Warlpiri / Tanami)", "lat": -20.50, "lon": 131.50},
+            {"nome": "Grande Deserto Ocidental (Pitjantjatjara / Terras APY)", "lat": -26.00, "lon": 131.00},
+            {"nome": "Enclave da Terra de Arnhem (Yolŋu / Dhuwal)", "lat": -12.50, "lon": 136.00},
+            {"nome": "Florestas Tropicais de Queensland (Dyirbal)", "lat": -17.70, "lon": 145.50},
+            {"nome": "Bacia Murray-Darling (Wiradjuri / Sudeste)", "lat": -33.50, "lon": 147.00},
+            {"nome": "Refúgio Pleistocênico do Norte (Não-Pama-Nyungan / Gunwinyguan)", "lat": -13.00, "lon": 133.00}
+        ]
+    },
+    "node_oceania_trans_new_guinea": {
+        "nome": "Proto-Trans-Nova Guiné",
+        "lat": -5.78, "lon": 144.33,
+        "era": "c. 4000–2500 a.C.",
+        "urheimat": "Terras Altas Centrais de Papua-Nova Guiné (Vale do Wahgi / Kuk Swamp)",
+        "ecologia": "Vales intramontanos tropicais de altitude com horticultura antiga intensiva de taro e banana",
+        "desc": "Maior família entre as línguas papuas com mais de 400 línguas ao longo da cordilheira central da Nova Guiné, impulsionada pela domesticação e horticultura neolítica em Kuk Swamp.",
+        "alinhamento": "Ergativo-Absolutivo / Split; morfologia verbal aglutinante complexa com alternância medial/final",
+        "ordem": "SOV núcleo-final rígido com pós-posições",
+        "referencia": "Pawley, Andrew (2005). Papuan Pasts. Ross, Malcolm (2005). Foley, William A. (2000).",
+        "dispersions": [
+            {"nome": "Terras Altas Ocidentais (Enga / PNG)", "lat": -5.45, "lon": 143.70},
+            {"nome": "Vale do Wahgi (Melpa / Monte Hagen)", "lat": -5.85, "lon": 144.22},
+            {"nome": "Vale de Baliem (Dani Ocidental / Papua Montanhosa)", "lat": -4.10, "lon": 138.95},
+            {"nome": "Planícies Aluviais do Sul (Asmat / Manguezais)", "lat": -5.40, "lon": 138.50},
+            {"nome": "Ilhas Menores de Sonda (Timor-Alor-Pantar / Makasae)", "lat": -8.50, "lon": 126.50}
+        ]
     }
 }
-print("Geographic, chronological and linguistic metadata updated for all 19 trunks.")
+print("Geographic, chronological and linguistic metadata updated for all 21 trunks.")
